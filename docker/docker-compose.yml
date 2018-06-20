@@ -1,0 +1,51 @@
+# This docker-compose file creates/starts:
+#   * a mysql database
+#   * adminer to administrate that database 
+#       accessible via http://localhost:$MYSQL_ADMINER_PORT, 
+#       e.g. http://localhost:8888
+#   * the mdswriter app, see https://github.com/AIPHES/mdswriter,
+#       accessible via http://localhost:$APP_PORT/mdswriter, 
+#       e.g. http://localhost:8080/mdswriter
+#
+# Prerequisites:
+#   * docker
+#   * docker-compose
+#
+# Required files:
+#   * docker-compose.yml (this file)
+#   * Dockerfile (to build and execute the msdwriter service)
+#   * Dockerfile.mysql (mysql service)
+#   * .env (environment file)
+#
+# Adapt the .env file for your needs and start the service by executing
+# the following from the directory containing the mentioned files:
+#   docker-compose up
+
+version: '2.3'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: mdswriter
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - $MYSQL_ADMINER_PORT:8080
+
+  mdswriter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DB_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    depends_on:
+      - db
+      - adminer
+    ports:
+      - $APP_PORT:8080

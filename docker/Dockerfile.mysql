@@ -1,0 +1,4 @@
+# do not use latest mysql, it causes problems with sha password hashes
+FROM mysql:5
+ADD https://raw.githubusercontent.com/AIPHES/mdswriter/master/doc/mdswriter_schema.sql /docker-entrypoint-initdb.d/
+RUN chmod -R 775 /docker-entrypoint-initdb.d
