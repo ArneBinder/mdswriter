@@ -3,7 +3,7 @@
 This docker-compose file creates/runs:
    * a mysql database
    * adminer to administrate that database accessible via `http://localhost:$MYSQL_ADMINER_PORT`, e.g. `http://localhost:8888`
-   * the mdswriter app, see https://github.com/AIPHES/mdswriter, accessible via `http://localhost:$APP_PORT/mdswriter`, e.g. `http://localhost:8080/mdswriter`
+   * the mdswriter app, see https://github.com/UKPLab/mdswriter, accessible via `http://localhost:$APP_PORT/mdswriter`, e.g. `http://localhost:8080/mdswriter`
 
 ## Prerequisites:
    * [docker](https://www.docker.com/get-docker)
