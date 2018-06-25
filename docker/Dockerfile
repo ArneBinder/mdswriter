@@ -15,6 +15,6 @@ RUN echo "all database connection settings:" && cat /root/mdswriter/src/main/web
 WORKDIR /root/mdswriter
 RUN mvn package
 
-FROM tomcat:9-jre8
+FROM tomcat:9-jre8-alpine
 # Deploy the war file to the application server.
 COPY --from=builder /root/mdswriter/target/mdswriter-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/mdswriter.war
