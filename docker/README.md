@@ -16,7 +16,7 @@ This docker-compose file creates/runs:
   * [.env](.env) (environment file)
 
 ## Run
-Adapt the .env file for your needs and start the service by executing
+Adapt the [.env](.env) file for your needs and start the service by executing
 the following from the directory containing the mentioned files:
 ```bash
 docker-compose up
