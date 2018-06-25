@@ -24,7 +24,7 @@ the following from the directory containing the mentioned files:
 docker-compose up
 ```
 
-Assuming the default ports are used (in your `.env` file) 
+Assuming the default ports are used (in your `.env` file),
 * the MDSWriter service should be available at [http://localhost:8080/mdswriter](http://localhost:8080/mdswriter) (`http://localhost:$APP_PORT/mdswriter`) and 
 * the MYSQL adminer (to add users and documents etc.) at [http://localhost:8888/?server=db&username=root&db=mdswriter](http://localhost:8888/?server=db&username=root&db=mdswriter) (`http://localhost:$MYSQL_ADMINER_PORT`).
    
