@@ -5,9 +5,9 @@ WORKDIR /root
 RUN git clone https://github.com/AIPHES/mdswriter.git
 
 # Update src/main/webapp/META-INF/context.xml with your database settings.
-RUN echo "set database url to: jdbc:mysql://db:3306/mdswriter"
+#RUN echo "set database url to: jdbc:mysql://db:3306/mdswriter"
 RUN sed -i -e 's|url=".*"|url="jdbc:mysql://db:3306/mdswriter"|g' /root/mdswriter/src/main/webapp/META-INF/context.xml
-RUN echo "set database root password to: $DB_ROOT_PASSWORD"
+#RUN echo "set database root password to: $DB_ROOT_PASSWORD"
 RUN sed -i -e "s|password=\".*\"|password=\"$DB_ROOT_PASSWORD\"|g" /root/mdswriter/src/main/webapp/META-INF/context.xml
 RUN echo "all database connection settings:" && cat /root/mdswriter/src/main/webapp/META-INF/context.xml && echo
 
